@@ -1,0 +1,27 @@
+.headText {
+  font-weight: 700;
+  font-size: 86px !important;
+}
+
+.secondText {
+  font-weight: 700;
+  font-size: 46px !important;
+}
+
+.left {
+  margin: 120px 0;
+}
+
+@media all and (max-width: 992px) {
+  .right {
+    display: none;
+  }
+
+  .headText {
+    font-size: 40px !important;
+  }
+
+  .icon {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,30 @@
+.contain {
+  margin-top: 124px;
+}
+
+.border {
+  border-bottom: 1px solid black;
+}
+
+.layout a {
+  text-decoration: none !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.formSearch {
+  display: none;
+}
+
+.notif {
+  width: 26px;
+  height: 26px;
+  right: -7px;
+  top: -14px;
+  color: rgb(0, 0, 0) !important;
+}
+
+@media all and (max-width: 992px) {
+  .formSearch {
+    width: 100% !important;
+  }
+}
