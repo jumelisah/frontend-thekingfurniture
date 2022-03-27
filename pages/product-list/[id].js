@@ -63,9 +63,18 @@ const ProductDetail = () => {
     const token = window.localStorage.getItem('token')
     setUserToken(token)
     getProductDetail(dispatch, router.query.id)
-    checkFavorite(dispatch, router.query.id)
-    checkWishlist(dispatch, router.query.id)
+
   }, [router.query.id])
+
+  useEffect(() => {
+    checkFavorite(dispatch, router.query.id)
+    if (favorite.data?.id) {
+      setLiked(true)
+    }
+    if (wishlist.data?.id) {
+      setWished(true)
+    }
+  }, [])
 
 
   const counter = useSelector(state => state.counter)
@@ -114,6 +123,7 @@ const ProductDetail = () => {
   }
 
   const wishlistProduct = async () => {
+    setWished(!wished)
     const data = { id_product: router.query.id }
     addToWishlist(dispatch, data)
   }
@@ -226,10 +236,10 @@ const ProductDetail = () => {
                     <button className={`${styles.button} py-3 px-5 ms-3 me-3 text-white`} onClick={addCart}>Add to cart</button>
                   </div>
                   <div className='d-inline-block'>
-                    <button onClick={likeProduct} className={`${styles.buttonLike} py-3 px-3 ${favorite.data?.id || liked ? 'text-danger' : 'text-white'}`}><FaHeart className='fs-5' /></button>
+                    <button onClick={likeProduct} className={`${styles.buttonLike} py-3 px-3 ${liked ? 'text-danger' : 'text-white'}`}><FaHeart className='fs-5' /></button>
                   </div>
                   <div className='d-inline-block'>
-                    <button onClick={wishlistProduct} className={`${styles.buttonWish} py-3 ms-3 text-white`}>Add to wishlist</button>
+                    <button onClick={wishlistProduct} className={`${styles.buttonWish} py-3 ms-3 text-white `} ><p className={`p-0 m-0 ${wished ? 'text-danger' : 'text-white'}`}>Add to wishlist</p></button>
                   </div>
                 </div>
               </Col>

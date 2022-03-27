@@ -87,7 +87,7 @@ const MyOrder = () => {
               <Col xs={6} lg={2} className='my-auto mt-4 mt-lg-auto'>
                 <div>
                   <span className="text-muted d-inline d-lg-none">Price: </span>
-                  <span className="fw-bold"><NumberFormat value={datas?.total_price} displayType={'text'} thousandSeparator={'.'} decimalSeparator={','} prefix={'Rp. '} ></NumberFormat></span>
+                  <span className="fw-bold"><NumberFormat value={datas?.product.price} displayType={'text'} thousandSeparator={'.'} decimalSeparator={','} prefix={'Rp. '} ></NumberFormat></span>
                 </div>
               </Col>
               <Col xs={6} lg={2} className='my-auto mt-4 mt-lg-auto'>

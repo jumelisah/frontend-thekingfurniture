@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux'
 import { increment, decrement } from '../redux/actions/buttons'
 import { useSelector } from 'react-redux'
 import { deleteCart, getCart } from '../redux/actions/cart'
+import Layout from '../components/Layout'
 
 const Cart = ()=>{
   const router = useRouter()
@@ -42,6 +43,7 @@ const onIncrement = (e)=>{
   }
   return(
       <>
+        <Layout>
         <Head>
         <title>The King | Product List</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -168,6 +170,7 @@ const onIncrement = (e)=>{
         </Container>
       </div>}
       </div>
+      </Layout>
       </>
   )
 }
