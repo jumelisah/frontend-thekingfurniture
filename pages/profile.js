@@ -87,7 +87,7 @@ const ProfileSeller = () => {
                 <Form onSubmit={profileHandler}>
                 <div className="mt-5 mx-5 px-5">
                     <div className="d-flex flex-row align-items-center position-relative">
-                        <Image src={auth.userData.picture || people} width={70} height={70} alt="profile" id="profile-image" className=" rounded-circle" />
+                        <Image src={auth.userData?.picture || people} width={70} height={70} alt="profile" id="profile-image" className=" rounded-circle" />
                         <Button block variant='pallet-2 radius position-absolute ' onClick={(e) => uploadFile(e)}> Edit <HiOutlinePencil size={20} /> </Button>
                         <input type="file"
                             ref={hiddenFileInput}
@@ -179,7 +179,7 @@ const ProfileSeller = () => {
             <Form onSubmit={profileHandler}>
             <div className="mt-5 mx-5 px-5">
                 <div className="d-flex flex-row align-items-center position-relative">
-                    <Image src={auth.userData.picture || people} width={70} height={70} alt="profile" id="profile-image" className=" rounded-circle" />
+                    <Image src={auth.userData?.picture || people} width={70} height={70} alt="profile" id="profile-image" className=" rounded-circle" />
                     <Button block variant='pallet-2 radius position-absolute ' onClick={(e) => uploadFile(e)}> Edit <HiOutlinePencil size={20} /> </Button>
                     <input type="file"
                         ref={hiddenFileInput}

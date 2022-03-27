@@ -7,6 +7,9 @@ const productSeller = (state = dataProductSeller, action) => {
         case 'GET_PRODUCT_SELLER': {
             const data = action.payload
             state.data = data
+            if(!Array.isArray(data)){
+                state.data = [data]
+            }
             return {...state }
         }
         case 'DELETE_PRODUCT_SELLER': {

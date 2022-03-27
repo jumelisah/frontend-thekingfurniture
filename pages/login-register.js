@@ -98,7 +98,7 @@ const LoginRegister = () => {
                       </div>
                     </Col>
                     <Col xl={6}>
-                      <Link href="/forgot">
+                      <Link href="/Forgot">
                         <a className='text-danger'>Forgot your password</a>
                       </Link>
                     </Col>
