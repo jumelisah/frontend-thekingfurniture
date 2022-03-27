@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { getProduct } from "../redux/actions/productList"
 import styles from '../styles/ProductDetail.module.scss'
 import NumberFormat from "react-number-format";
+import empty from "../public/images/empty-input-image.png"
 
 
 export default function Home() {

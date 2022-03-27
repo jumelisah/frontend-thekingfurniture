@@ -21,6 +21,7 @@ import SizeCard from "../components/SizeCard";
 import NumberFormat from "react-number-format";
 import { getCategory, getCategoryTotal } from "../redux/actions/category";
 import Layout from "../components/Layout";
+import BreadCrumb from "../components/BreadCrumb";
 
 const ProductList = () => {
     const {color, product, size, category} = useSelector(state=>state)
@@ -109,42 +110,6 @@ const ProductList = () => {
                                 </div>
                             )
                         })}
-                        {/* <div className="d-flex flex-row justify-content-between">
-                            <div>Accessories</div>
-                            <div>5</div>
-                        </div>
-                        <div className="d-flex flex-row justify-content-between">
-                            <div>Brands</div>
-                            <div>15</div>
-                        </div>
-                        <div className="d-flex flex-row justify-content-between">
-                            <div>Clothing</div>
-                            <div>3</div>
-                        </div>
-                        <div className="d-flex flex-row justify-content-between">
-                            <div>Fashion</div>
-                            <div>8</div>
-                        </div>
-                        <div className="d-flex flex-row justify-content-between">
-                            <div>Furniture</div>
-                            <div>9</div>
-                        </div>
-                        <div className="d-flex flex-row justify-content-between">
-                            <div>Men</div>
-                            <div>6</div>
-                        </div>
-                        <div className="d-flex flex-row justify-content-between">
-                            <div>Women</div>
-                            <div>8</div>
-                        </div>
-                        <div className="d-flex flex-row justify-content-between">
-                            <div>Shoes</div>
-                            <div>10</div>
-                        </div>
-                        <div className="d-flex flex-row justify-content-between">
-                            <div>Wallets</div>
-                            <div>11</div>
-                        </div> */}
                         </div>
                         <Form>
                         <div style={{

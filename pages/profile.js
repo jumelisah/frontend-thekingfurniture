@@ -173,7 +173,7 @@ const ProfileSeller = () => {
                     <div className={`${styles.contents} text-center mb-5`}>See your notifications for the latest updates</div>
                 </div>
             </div>
-            <div className="d-flex justify-content-center align-items-center px-5 mx-5">                    
+            <div className="d-flex justify-content-center align-items-center">                    
                 <NavbarProfile />    
             </div>
             <Form onSubmit={profileHandler}>
