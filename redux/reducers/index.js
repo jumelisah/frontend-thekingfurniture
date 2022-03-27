@@ -14,23 +14,25 @@ import favorite from './favorite'
 import category from './category';
 import transactionSeller from './transactionSeller'
 import paymentMethod from './paymentMethod'
+import wishlist from './wishlist'
 
 const rootReducers = combineReducers({
-    auth,
-    productDetail,
-    counter,
-    pages,
-    product,
-    color,
-    size,
-    buttons,
-    users,
-    productSeller,
-    cart,
-    favorite,
-    category,
-    transactionSeller,
-    paymentMethod
+  auth,
+  productDetail,
+  counter,
+  pages,
+  product,
+  color,
+  size,
+  buttons,
+  users,
+  productSeller,
+  cart,
+  favorite,
+  category,
+  transactionSeller,
+  paymentMethod,
+  wishlist
 })
 
 export default rootReducers
