@@ -16,18 +16,6 @@ export const addToWishlist = async (dispatch, dataWish) => {
     // }
 }
 
-export const removeWishlist = async (dispatch, id) => {
-    try {
-        dispatch({type: 'TOGGLE_LOADING'})
-        const token = window.localStorage.getItem('token')
-        const { data } = await http(token).delete(`/wishlist/${id}`)
-        dispatch({type: 'REMOVE_WISHLIST', payload: data.result})
-        dispatch({type: 'TOGGLE_LOADING'})
-    } catch (e) {
-        console.log(e)
-    }
-}
-
 export const checkWishlist = async (dispatch, id) => {
     try {
         dispatch({type: 'TOGGLE_LOADING'})

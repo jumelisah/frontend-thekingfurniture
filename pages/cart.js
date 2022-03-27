@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useState,useEffect } from "react"
+import { useRouter } from 'next/router'
 import { Row, Col, Container, Form } from "react-bootstrap"
 import Image from "next/image"
 import Button from "../components/Button"
@@ -12,6 +13,7 @@ import { useSelector } from 'react-redux'
 import { getCart } from '../redux/actions/cart'
 
 const Cart = ()=>{
+  const router = useRouter()
   const buttons = useSelector(state=>state.buttons)
   const { cart, pages } = useSelector(state=>state)
   const {totalPrice, setTotalPrice} = useState({value: 0})
@@ -34,6 +36,9 @@ const onIncrement = (e)=>{
   const onDecrement = (e)=>{
     e.preventDefault()
     dispatch(decrement())
+  }
+  const toCheckout = () => {
+    router.push('/cart-checkout')
   }
 
   return(
@@ -133,7 +138,7 @@ const onIncrement = (e)=>{
                     </Row>
                 </div>
                 <div className="ms-md-4 mb-5 d-grid gap-2">
-                  <Button styleCart={`${carts.buttonCo}`}>Procced To Check Out</Button>
+                  <Button onClick={toCheckout} styleCart={`${carts.buttonCo}` }>Procced To Check Out</Button>
                 </div>
             </Col>
           </Row>

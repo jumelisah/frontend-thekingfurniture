@@ -82,7 +82,7 @@ export default function Home() {
                   {product.data.map((datas, idx)=>{
                                 return (
                                   <Col md={4} key={datas.id} style={{cursor: 'pointer'}} onClick={()=>productDetail(datas.id)} className="mb-4">
-                                  <Image src={datas.product_images[0]?.image ? datas.product_images[0]?.image : empty} width={360} height={450} alt="chair"/>
+                                  <Image src={datas.product_images[0]?.image ? datas.product_images[0]?.image : '/images/chair.png'} width={360} height={450} alt="chair"/>
                                   <div className="text-md-start ms-4">
                                     <p className='fs-5'>{datas.name}</p>
                                     <div className='fs-6 fw-bold'>Rp. {datas.price}</div>
@@ -180,7 +180,7 @@ export default function Home() {
                   <p>MODERN CHAIR</p>
                 </Card.Text>
                 <h2>SALE 50%</h2>
-                <Link href="#"><KingButton variant="ms-3 fs-6 text-decoration-none bg-color1 text-light fw-bold mb-5">SHOP NOW</KingButton></Link>
+                <Link href="#" passHref><KingButton variant="ms-3 fs-6 text-decoration-none bg-color1 text-light fw-bold mb-5">SHOP NOW</KingButton></Link>
               </Card.Body>
             </Container>
           </Card>

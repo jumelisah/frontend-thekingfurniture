@@ -16,6 +16,11 @@ const cart = (state = initialState, action) => {
       state.data = data
       return { ...state }
     }
+    case 'CHECKOUT_CART': {
+      const data = action.payload
+      state.data = data
+      return { ...state }
+    }
     default: {
       return { ...state }
     }

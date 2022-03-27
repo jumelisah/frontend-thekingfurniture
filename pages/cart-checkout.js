@@ -4,8 +4,27 @@ import carts from "../styles/cart.module.scss"
 import Image from "next/image"
 import Head from "next/head"
 import visa from "../public/images/logos_visa.png"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { getCart, checoutCart } from "../redux/actions/cart"
 
 const SellingProduct = () => {
+    const dispatch = useDispatch()
+    const {cart} = useSelector(state=>state)
+
+    useEffect(()=>{
+        getCart(dispatch)
+    }, [])
+
+    const onCheckout = (e) => {
+        e.preventDevault
+        const data = {}
+        cart.data?.forEach(element => {
+            console.log(element)
+            data.id_transaction_status = 2
+            checoutCart(dispatch, element.id, data)
+        });
+    }
     return (
         <>
             <Head>
@@ -68,7 +87,7 @@ const SellingProduct = () => {
                             </Form.Select>
                         </Col>
                         <Col xs={12} className='text-center mt-3 mb-5'>
-                            <Button styleCart={carts.buttonCO}>Check Out</Button>
+                            <Button onClick={onCheckout} styleCart={carts.buttonCO}>Check Out</Button>
                         </Col>
                     </Row>                    
                 </div>                 
