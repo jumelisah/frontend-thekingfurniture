@@ -5,14 +5,50 @@ import styles from '../styles/Wishlist.module.scss'
 import Image from 'next/image'
 import { BsCheck, BsFillHeartFill } from 'react-icons/bs';
 import Button from "../components/Button";
+import { useDispatch, useSelector } from 'react-redux'
+import { getFavorite } from "../redux/actions/favorite"
+import { useEffect, useState } from "react"
+import { getProfile } from "../redux/actions/auth"
 
 const Favorite = () => {
 
-  const productsFavorite = [
-    { image: '/images/img-product.png', name: 'Coaster 506222-CO Loveseat', status: 'In Stock', price: 'Rp. 400.000' },
-    { image: '/images/img-product.png', name: 'Coaster 506222-CO Loveseat', status: 'In Stock', price: 'Rp. 400.000' },
-    { image: '/images/img-product.png', name: 'Coaster 506222-CO Loveseat', status: 'In Stock', price: 'Rp. 400.000' },
-  ]
+  // const productsFavorite = [
+  //   { image: '/images/img-product.png', name: 'Coaster 506222-CO Loveseat', status: 'In Stock', price: 'Rp. 400.000' },
+  //   { image: '/images/img-product.png', name: 'Coaster 506222-CO Loveseat', status: 'In Stock', price: 'Rp. 400.000' },
+  //   { image: '/images/img-product.png', name: 'Coaster 506222-CO Loveseat', status: 'In Stock', price: 'Rp. 400.000' },
+  // ]
+
+  const dispatch = useDispatch()
+
+  const { auth, favorite } = useSelector(state => state)
+
+  useEffect(() => {
+    if (auth.userData?.id) {
+      console.log(auth.userData?.id)
+      dispatch(getFavorite(auth.userData?.id))
+    }
+  }, [auth.userData.id])
+
+  useEffect(() => {
+    dispatch(getProfile)
+  }, [])
+
+  const addCart = async (e) => {
+    e.preventDefault()
+    const data = {
+      id_product: router.query.id,
+      qty: counter.num > 1 ? counter.num : 1,
+      recipient_name: 'Unset',
+      address: 'Unset',
+    }
+    console.log(data)
+    await addToCart(dispatch, userToken, data)
+    await setShowModalAdd(true)
+    setTimeout(() => {
+      setShowModalAdd(false)
+    }
+      , 5000)
+  }
 
   return (
     <>
@@ -40,22 +76,22 @@ const Favorite = () => {
               <span className="ms-0 ms-lg-5">Price</span>
             </Col>
           </Row>
-          {productsFavorite.map(item => {
+          {favorite.data.map((datas, idx) => {
             return (
               <>
                 <Row className='mb-5'>
                   <Col xs={12} sm={6} lg={4} className='d-flex flex-row align-items-center'>
-                    <Image className={`${styles.image}`} src={item.image} width={170} height={172} alt='wishlist' />
-                    <span className="ps-4">{item.name}</span>
+                    <Image className={`${styles.image}`} src={datas.product_images[0]?.image ? datas.product_images[0]?.image : empty} width={170} height={172} alt='wishlist' />
+                    <span className="ps-4">{datas.name}</span>
                   </Col>
                   <Col xs={12} sm={6} lg={4} className='my-auto'>
                     <span className="ms-0 ms-lg-5">
-                      <span ><BsCheck /></span> {item.status}
+                      <span ><BsCheck /></span> {datas.stock}
                     </span>
                   </Col>
                   <Col xs={12} sm={12} lg={4} className='my-auto d-flex align-items-center'>
-                    <span className="ms-0 ms-lg-5">{item.price}</span>
-                    <Button className={`${styles.button} px-5 py-2 ms-5`} color='danger'>Add to cart</Button>
+                    <span className="ms-0 ms-lg-5">{datas.price}</span>
+                    <Button className={`${styles.button} px-5 py-2 ms-5`} color='danger' onClick={addCart}>Add to cart</Button>
                   </Col>
                 </Row>
               </>
