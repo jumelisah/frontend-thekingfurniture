@@ -16,11 +16,12 @@ export const addToFavorite = async (dispatch, dataFav) => {
   // }
 }
 
-export const getFavorite = (id_user) => {
+export const getFavorite = (token) => {
   return async (dispatch) => {
     try {
       dispatch({ type: 'TOGGLE_LOADING' })
-      const { data } = await http().get(`/favorite/user-and-product/${id_user}`)
+      const token = window.localStorage.getItem('token')
+      const { data } = await http(token).get(`/favorite/user`)
       dispatch({ type: 'GET_FAVORITE', payload: data.result })
       dispatch({ type: 'TOGGLE_LOADING' })
     } catch (e) {

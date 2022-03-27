@@ -22,6 +22,9 @@ const favorite = (state = initialState, action) => {
     case 'GET_FAVORITE': {
       const data = action.payload
       state.data = data
+      if (!Array.isArray(data)) {
+        state.data = [data]
+      }
       return { ...state }
     }
     default: {
