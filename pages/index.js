@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { getProduct } from "../redux/actions/productList"
 import styles from '../styles/ProductDetail.module.scss'
 import NumberFormat from "react-number-format";
+import empty from "../public/images/empty-input-image.png"
 
 
 export default function Home() {
@@ -222,66 +223,45 @@ export default function Home() {
             <Container>
             <Row className='mt-5 mb-5 text-center'>
             <Col md={4} className="mb-4">
-                      <Image src="/images/chair.png" width={360} height={450} alt="chair"/>
+                      <Image src="/images/ht1.jpeg" width={360} height={450} alt="chair"/>
                       <div className="text-md-start ms-auto me-auto">
-                        <p className='fs-5'>Coaster 506222-CO Loveseat</p>
-                        <div className='fs-6 fw-bold'>Rp. 900.000</div>
+                        <p className='fs-5'>Rinninge Chair</p>
+                        <div className='fs-6 fw-bold'>Rp. 2.095.000</div>
                       </div>
                     </Col>
                     <Col md={4} className="mb-4">
-                      <Image src="/images/chair.png" width={360} height={450} alt="chair"/>
+                      <Image src="/images/ht2.jpg" width={360} height={450} alt="chair"/>
                       <div className="text-md-start ms-4">
-                        <p className='fs-5'>Coaster 506222-CO Loveseat</p>
-                        <div className='fs-6 fw-bold'>Rp. 900.000</div>
+                        <p className='fs-5'>Kyrre Chair</p>
+                        <div className='fs-6 fw-bold'>Rp. 295.000</div>
                       </div>
                     </Col>
                     <Col md={4} className="mb-4">
-                      <Image src="/images/chair.png" width={360} height={450} alt="chair"/>
+                      <Image src="/images/ht3.jpg" width={360} height={450} alt="chair"/>
                       <div className="text-md-start ms-4">
-                        <p className='fs-5'>Coaster 506222-CO Loveseat</p>
-                        <div className='fs-6 fw-bold'>Rp. 900.000</div>
+                        <p className='fs-5'>Trotten Office Table</p>
+                        <div className='fs-6 fw-bold'>Rp. 3.300.000</div>
                       </div>
                     </Col>
                     <Col md={4} className="mb-4">
-                      <Image src="/images/chair.png" width={360} height={450} alt="chair"/>
+                      <Image src="/images/ht4.jpeg" width={360} height={450} alt="chair"/>
                       <div className="text-md-start ms-4">
-                        <p className='fs-5'>Coaster 506222-CO Loveseat</p>
-                        <div className='fs-6 fw-bold'>Rp. 900.000</div>
+                        <p className='fs-5'>Bekant Table Set</p>
+                        <div className='fs-6 fw-bold'>Rp. 3.900.000</div>
                       </div>
                     </Col>
                     <Col md={4} className="mb-4">
-                      <Image src="/images/chair.png" width={360} height={450} alt="chair"/>
+                      <Image src="/images/ht5.jpeg" width={360} height={450} alt="chair"/>
                       <div className="text-md-start ms-4">
-                        <p className='fs-5'>Coaster 506222-CO Loveseat</p>
-                        <div className='fs-6 fw-bold'>Rp. 900.000</div>
+                        <p className='fs-5'>Gallant Wardrobe</p>
+                        <div className='fs-6 fw-bold'>Rp. 1.900.000</div>
                       </div>
                     </Col>
                     <Col md={4} className="mb-4">
-                      <Image src="/images/chair.png" width={360} height={450} alt="chair"/>
+                      <Image src="/images/ht6.png" width={360} height={450} alt="chair"/>
                       <div className="text-md-start ms-4">
-                        <p className='fs-5'>Coaster 506222-CO Loveseat</p>
-                        <div className='fs-6 fw-bold'>Rp. 900.000</div>
-                      </div>
-                    </Col>
-                    <Col md={4} className="mb-4">
-                      <Image src="/images/chair.png" width={360} height={450} alt="chair"/>
-                      <div className="text-md-start ms-4">
-                        <p className='fs-5'>Coaster 506222-CO Loveseat</p>
-                        <div className='fs-6 fw-bold'>Rp. 900.000</div>
-                      </div>
-                    </Col>
-                    <Col md={4} className="mb-4">
-                      <Image src="/images/chair.png" width={360} height={450} alt="chair"/>
-                      <div className="text-md-start ms-4">
-                        <p className='fs-5'>Coaster 506222-CO Loveseat</p>
-                        <div className='fs-6 fw-bold'>Rp. 900.000</div>
-                      </div>
-                    </Col>
-                    <Col md={4} className="mb-4">
-                      <Image src="/images/chair.png" width={360} height={450} alt="chair"/>
-                      <div className="text-md-start ms-4">
-                        <p className='fs-5'>Coaster 506222-CO Loveseat</p>
-                        <div className='fs-6 fw-bold'>Rp. 900.000</div>
+                        <p className='fs-5'>Kitchen Set</p>
+                        <div className='fs-6 fw-bold'>Rp. 5.900.000</div>
                       </div>
                     </Col>
             </Row>

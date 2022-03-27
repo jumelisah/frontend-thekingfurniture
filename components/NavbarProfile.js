@@ -24,7 +24,7 @@ const NavbarProfile = () => {
                     a{
                         color: rgba(58, 61, 66, 0.4);
                         text-decoration: none;
-                        font-size:1.8rem;
+                        font-size:2rem;
                     }
                     a{
                         color: transparent;
@@ -49,13 +49,9 @@ const NavbarProfile = () => {
               {file.map(item => {
                 return (
                   <>
-                    <div className='d-flex flex-column justify-content-between'>
-                      <li key={item.name} className="nav-item mx-3 d-flex flex-row align-items-center">
-                        <a className={active === item.link ? 'active actived nav-link' : 'nav-link'} aria-current="page" href={item.link}>{item.name}</a>
-                        {item.name === "My Product" && <span><FaChevronDown /></span>}
-                        {item.name === "My Order" && <span><FaChevronDown /></span>}
-                      </li>
-                    </div>
+                    <li key={item.name} className="mx-3 d-flex flex-row align-items-center justify-content-between">
+                      <a className={active === item.link ? 'active actived nav-link' : 'nav-link'} aria-current="page" href={item.link}>{item.name}</a>
+                    </li>
                   </>
                 )
               })}
