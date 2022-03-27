@@ -42,13 +42,9 @@ const ProductList = () => {
         dispatch(getSize)
     },[dispatch])
 
-    useEffect(()=>{
-        dispatch(getCategory)
-    },[dispatch])
-
-    // useEffect(() => {
-    //     dispatch(getCategoryTotal);
-    //   }, [])
+    useEffect(() => {
+        dispatch(getCategoryTotal);
+      }, [])
 
     const rangeSelector = (event, newValue) => {
         setValue(newValue);
@@ -106,7 +102,7 @@ const ProductList = () => {
                             return (
                                 <div key={data.id} className="d-flex flex-row justify-content-between">
                                     <div>{data.name}</div>
-                                    {/* <div>{data.id}</div> */}
+                                    <div>{data.count}</div>
                                 </div>
                             )
                         })}
