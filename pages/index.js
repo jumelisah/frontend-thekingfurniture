@@ -1,17 +1,64 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+// import styles from '../styles/Home.module.css'
 import Layout from '../components/Layout'
 import Link from 'next/link'
 import { Row,Col, Container,Nav } from 'react-bootstrap'
 import homepage from '../styles/homepage.module.scss'
 import KingButton from '../components/KingButton'
-import NavbarProduct from '../components/NavbarProduct'
 import { Card } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import { getProduct } from "../redux/actions/productList"
+import styles from '../styles/ProductDetail.module.scss'
+import NumberFormat from "react-number-format";
 
 
 export default function Home() {
+
+  const {product} = useSelector(state=>state)
+  const dispatch = useDispatch()
+  const router = useRouter()
+  const [active, setActive] = useState('newProduct')
+
+  const menu = [
+    {onclick: 'newProduct', name: 'New Product'},
+    {onclick: 'hotTrend', name: 'Hot Trend'},
+    {onclick: 'sellingOffer', name: 'Selling Offer'},
+    
+  ]
+
+  const productDetail = (id) => {
+    router.push(`product-list/${[id]}`)
+  }
+
+  useEffect(()=> {
+    dispatch(getProduct)
+  }, [dispatch])
+
   return (
+    <>
+    <style jsx>
+        {`
+          .menu {
+              list-style-type: none;
+          }
+          .menu li {
+              margin: 10px 20px;
+          }
+          .menu li a{
+            color: #CF9C1F;
+            padding-bottom: 10px;
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+          }
+          .menu li a.active{
+            color: #855b27;
+            border-color: #855b27;
+          }
+      `}
+      </style>
     <Layout>
     <div className={styles.container}>
       <Head>
@@ -57,17 +104,47 @@ export default function Home() {
                     </p>
                     <div className='mt-5 mb-5 d-flex align-items-center'>
                             <div className={homepage.lineHorizontal}></div>
-                            <Link href="#"><a className="ms-3 fs-6 text-color1 text-decoration-none fw-bold">DISCOVER MORE</a></Link>
+                            <Link href="#"><a className="ms-3 fs-6 text-color3 text-decoration-none fw-bold">DISCOVER MORE</a></Link>
                     </div>
                     </Col>
                 </Row>
             </Container>
           </section>
+          <Row className='mt-5 mb-5'>
+              <Col xl={12}>
+                <ul className='menu d-flex align-items-center justify-content-center' key='menu'>
+                  {menu.map(item => {
+                    return (
+                      <li key={item.name}>
+                        <div className='cursor-pointer' onClick={() => { setActive(item.onclick) }}>
+                          <a className={`${styles.cursor} d-flex flex-row align-items-center  mt-4 fs-5 ${active === item.onclick ? 'active' : ''}`}>
+                            {item.name}
+                          </a>
+                        </div>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </Col>
+            </Row>
+          {active === 'newProduct' &&
+          <> 
           <section>
               <Container>
-                <NavbarProduct/>
                   <Row className='mt-5 mb-5 text-center'>
-                    <Col md={4} className="mb-4">
+                  {product.data.map((datas, idx)=>{
+                                return (
+                                  <Col md={4} key={datas.id} style={{cursor: 'pointer'}} onClick={()=>productDetail(datas.id)} className="mb-4">
+                                  <Image src={datas.product_images[0]?.image ? datas.product_images[0]?.image : empty} width={360} height={450} alt="chair"/>
+                                  <div className="text-md-start ms-4">
+                                    <p className='fs-5'>{datas.name}</p>
+                                    <div className='fs-6 fw-bold'><NumberFormat value={datas?.price} displayType={'text'} thousandSeparator={'.'} decimalSeparator={','} prefix={'Rp. '} ></NumberFormat></div>
+                                  </div>
+                                </Col>
+                                )
+                            })}
+
+                    {/* <Col md={4} className="mb-4">
                       <Image src="/images/chair.png" width={360} height={450} alt="chair"/>
                       <div className="text-md-start ms-auto me-auto">
                         <p className='fs-5'>Coaster 506222-CO Loveseat</p>
@@ -129,14 +206,16 @@ export default function Home() {
                         <p className='fs-5'>Coaster 506222-CO Loveseat</p>
                         <div className='fs-6 fw-bold'>Rp. 900.000</div>
                       </div>
-                    </Col>
+                    </Col> */}
                   </Row>
                   <div className='mt-5 mb-5 d-flex align-items-center justify-content-center'>
                       <div className={homepage.lineHorizontal}></div>
-                      <Link href="#"><a className="ms-3 fs-6 text-color1 text-decoration-none fw-bold">VIEW MORE PRODUCTS</a></Link>
+                      <Link href="/product-list"><a className="ms-3 fs-6 text-color3 text-decoration-none fw-bold">VIEW MORE PRODUCTS</a></Link>
                   </div>
               </Container>
           </section>
+          </>
+          }
           <section>
           <Row className='py-5'>
           <Col xs={12} md={4}>
@@ -208,7 +287,7 @@ export default function Home() {
       </Row>
           </section>
           <section>
-          <Row className='py-5 bg-color4 align-items-center justify-content-center'>
+          <Row className='py-2 bg-color4 align-items-center justify-content-center mb-4'>
           <Col xs={12} md={6}>
             <Card className="text-center bg-color4 border-0">
               <Container>
@@ -226,5 +305,6 @@ export default function Home() {
         </section>
         </div>
     </Layout>
+    </>
   )
 }

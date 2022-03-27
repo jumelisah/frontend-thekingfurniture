@@ -1,7 +1,18 @@
-$theme-colors: #70553B;
+$theme-colors: #8E6737;
 
+.profiles {
+  background-image: url('../public/images/bg.png');
+  background-size: cover;
+}
+.content {
+  font-family: 'Arimo';
+  font-weight: 400;
+}
 .button{
   background-color: $theme-colors;
-  color: #DED0C1;
+  color: #CF9C1F;
   border: unset;
+}
+.button:hover{
+  background-color: #855b27;
 }

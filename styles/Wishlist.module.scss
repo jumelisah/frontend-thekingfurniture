@@ -1,0 +1,14 @@
+$theme-colors: #8E6737;
+
+.profiles {
+  background-image: url('../public/images/bg.png');
+  background-size: cover;
+}
+.button{
+  background-color: $theme-colors;
+  color: #CF9C1F;
+  border: unset;
+}
+.button:hover{
+  background-color: #855b27;
+}

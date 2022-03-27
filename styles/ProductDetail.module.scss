@@ -1,0 +1,48 @@
+$theme-colors: #8E6737;
+
+.counter{
+  border: 1px solid black;
+}
+.button{
+  background-color: $theme-colors;
+  color: #CF9C1F;
+  border: unset;
+}
+.button:hover{
+  background-color: #855b27;
+}
+.buttonLike{
+  background-color: $theme-colors;
+  color: #CF9C1F;
+  border: unset;
+}
+.buttonLike:hover{
+  background-color: #855b27;
+  color:red;
+}
+.buttonWish{
+  background-color: $theme-colors;
+  color: #CF9C1F;
+  border: unset;
+}
+.buttonWish:hover{
+  background-color: #855b27;
+}
+.roundBorder{
+  border: 1px solid black;
+  border-radius: 15px;
+  width: 30px;
+  height: 30px;
+}
+.text{
+  font-size: 11px;
+}
+.cursor{
+  cursor: pointer;
+}
+.image{
+  object-fit: cover;
+}
+.quantity{
+  cursor: pointer;
+}

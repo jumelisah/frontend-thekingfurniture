@@ -1,0 +1,36 @@
+.headText {
+    font-weight: 400;
+    font-size: 68px !important;
+    margin-top: 80px;
+    margin-bottom: 70px;
+}
+
+.timeText {
+    font-weight: 400;
+    font-size: 49px !important;
+    color: white;
+}
+
+.desText {
+    font-weight: 400;
+    font-size: 14px !important;
+    color: white;
+}
+
+.left {
+    margin: 120px 0;
+}
+
+@media all and (max-width: 992px) {
+    .right {
+        display: none;
+    }
+
+    .headText {
+        font-size: 40px !important;
+    }
+
+    .icon {
+        font-size: 15px;
+    }
+}

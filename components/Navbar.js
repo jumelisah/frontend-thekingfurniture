@@ -3,9 +3,22 @@ import Image from 'next/image'
 import styles from './styles/Navbar.module.css'
 import { useRouter } from "next/router";
 import { BiSearchAlt2, BiHeart, BiCartAlt } from 'react-icons/bi';
+import { useDispatch, useSelector } from "react-redux";
+import Button from "../components/Button"
+import { useEffect, useState } from "react";
+import { logout } from "../redux/actions/auth";
 
 const Navbar = () => {
   const route = useRouter();
+  const dispatch = useDispatch()
+  const {auth} = useSelector(state=>state)
+  const [userToken, setUserToken] = useState()
+  // const token = window.localStorage.getItem('token')
+
+  useEffect(()=>{
+    const token = window.localStorage.getItem('token')
+    setUserToken(token)
+  },[auth.token])
 
   const searchBtn = (e) => {
     e.preventDefault()
@@ -17,9 +30,14 @@ const Navbar = () => {
     }
   }
 
+  const logoutHandler = () => {
+    dispatch(logout)
+    setUserToken(null)
+  }
+
   return (
     <>
-    <nav className="navbar navbar-expand-lg navbar-dark bg-color1 fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-color1">
       <div className={`container ${styles.layout}`}>
         <Link href='/'>
           <a>
@@ -42,16 +60,27 @@ const Navbar = () => {
                   PAGES
                 </a>
               </Link>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                {[...Array(4)].map((data, index) => {
-                  return(
-                    <li key={index}>
-                      <Link href='/'>
-                        <a className="dropdown-item">pages</a>
-                      </Link>
-                    </li>
-                  )
-                })}
+              <ul className={`${styles.pages} dropdown-menu bg-color1`} aria-labelledby="navbarDropdown">
+                <li>
+                  <Link href='/about-us'>
+                  <a className="">About US</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/contact-us'>
+                  <a className="">Contact US</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/coming-soon'>
+                  <a className="">Coming Soon</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/faq'>
+                  <a className="">FAQ Page</a>
+                  </Link>
+                </li>
               </ul>
             </li>
             <li className="nav-item dropdown mx-lg-3">
@@ -60,16 +89,28 @@ const Navbar = () => {
                   SHOP
                 </a>
               </Link>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                {[...Array(4)].map((data, index) => {
-                  return(
-                    <li key={index}>
-                      <Link href='/'>
-                        <a className="dropdown-item">shop {index + 1}</a>
-                      </Link>
-                    </li>
-                  )
-                })}
+              <ul className={`${styles.shop} dropdown-menu bg-color1`} aria-labelledby="navbarDropdown">
+              <li>
+                <p className="text-light fw-bold">Other Page</p>
+                  <Link href='/cart'>
+                  <a className="">Shopping Cart</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/cart/checkout'>
+                  <a className="">Check Out</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/product-list'>
+                  <a className="">Product</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/order-tracking'>
+                  <a className="">Order Tracking</a>
+                  </Link>
+                </li>
               </ul>
             </li>
             <li>
@@ -86,25 +127,78 @@ const Navbar = () => {
                 <BiSearchAlt2 className="fs-2 text-white"/>
               </button>
               <form id="formSearch" className={styles.formSearch}>
-                <input className="form-control bg-white text-white text-center" />
+                <input type='text' className="form-control bg-white text-dark text-center" />
               </form>
             </li>
             <li className="nav-item">
+              <Link href='/favorite'>
               <button className="btn position-relative ms-lg-1">
                 <BiHeart className="fs-2 text-white"/>
-                <div className={`bg-white position-absolute text-white rounded-circle ${styles.notif}`}>10</div>
+                <div className={`bg-white position-absolute text-white rounded-circle ${styles.notif}`}>0</div>
               </button>
+              </Link>
             </li>
             <li className="nav-item">
+            <Link href='/cart'>
               <button className="btn position-relative mx-lg-1">
                 <BiCartAlt className="fs-2 text-white"/>
-                <div className={`bg-white position-absolute text-white rounded-circle ${styles.notif}`}>10</div>
+                <div className={`bg-white position-absolute text-white rounded-circle ${styles.notif}`}>0</div>
               </button>
+              </Link>
+             
             </li>
-            <li className="nav-item">
-              <button className="btn position-relative mx-lg-3 bg-white">
+            <li className="nav-item dropdown ms-lg-3">
+              <Link href='/'>
+                <a className="nav-link fw-bold fs-5" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <Image src='/images/menu.png' layout='intrinsic' alt='menu' width={25} height={25} />
-              </button>
+                </a>
+              </Link>
+              {userToken !== null && 
+              <ul className={`${styles.menu} dropdown-menu bg-color1`} aria-labelledby="navbarDropdown">
+                <li>
+                  <Link href='/profile'>
+                  <a className="">Profile</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/chat'>
+                  <a className="">Chat</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/notification'>
+                  <a className="">Notification</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/'>
+                  <a className=""><div onClick={logoutHandler}>Logout</div></a>
+                  </Link>
+                </li>
+              </ul>}
+              {userToken === null && 
+              <ul className={`${styles.menu} dropdown-menu bg-color1`} aria-labelledby="navbarDropdown">
+                <li>
+                  <Link href='/login-register'>
+                  <a className="">Login</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/login-register'>
+                  <a className="">Register</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/chat'>
+                  <a className="">Chat</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/notification'>
+                  <a className="">Notification</a>
+                  </Link>
+                </li>
+              </ul>}
             </li>
           </ul>
         </div>
