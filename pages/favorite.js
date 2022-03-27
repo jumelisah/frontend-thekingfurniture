@@ -86,8 +86,8 @@ const Favorite = () => {
                     </span>
                   </Col>
                   <Col xs={12} sm={12} lg={4} className='my-auto d-flex align-items-center'>
-                    <span className="ms-0 ms-lg-5">Rp. {datas.product.price.toLocaleString('id-ID')}</span>
-                    <Button className={`${styles.button} px-5 py-2 ms-5`} color='danger'>Add to cart</Button>
+                    <span className="ms-0 ms-lg-5">Rp.{datas.product.price.toLocaleString('id-ID')}</span>
+                    <Button className={`${styles.button} px-4 py-2 ms-5`} color='danger'>Add to cart</Button>
                   </Col>
                 </Row>
               </>
