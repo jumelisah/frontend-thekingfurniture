@@ -22,6 +22,8 @@ import NumberFormat from "react-number-format";
 import { getCategory, getCategoryTotal } from "../redux/actions/category";
 import Layout from "../components/Layout";
 import BreadCrumb from "../components/BreadCrumb";
+import ReactPaginate from "react-paginate";
+import { BiChevronsRight, BiChevronsLeft } from "react-icons/bi"
 
 const ProductList = () => {
     const {color, product, size, category} = useSelector(state=>state)
@@ -35,7 +37,7 @@ const ProductList = () => {
     },[dispatch])
 
     useEffect(()=>{
-        dispatch(getProduct)
+        getProduct(dispatch)
     },[dispatch])
 
     useEffect(()=>{
@@ -71,6 +73,12 @@ const ProductList = () => {
             }
         }
     }
+    const getNextData = async({selected}) => {
+        console.log(selected)
+        // window.scrollTo(0,0)
+        getProduct(dispatch, selected)
+    }
+
 
     const productDetail = (id) => {
         router.push(`product-list/${[id]}`)
@@ -202,7 +210,7 @@ const ProductList = () => {
                         </div>
                         {product.data &&
                         <Row className="mt-5">
-                            {product.data.map((datas, idx)=>{
+                            {product.data.result?.map((datas, idx)=>{
                                 return (
                                     <Col xl={4} key={datas.id} style={{cursor: 'pointer'}} onClick={()=>productDetail(datas.id)}>
                                         <Image src={datas.product_images[0]?.image ? datas.product_images[0]?.image : empty} width={293} height={400} alt='products' layout="fixed" />
@@ -213,7 +221,19 @@ const ProductList = () => {
                             })}                            
                         </Row>}
                         <div className="d-flex flex-column align-items-center mt-5 mb-5">
-                        <Pagination>
+                        <ReactPaginate
+                        previousLabel={<BiChevronsLeft />}
+                        nextLabel={<BiChevronsRight />}
+                        pageCount={product.data.pageinfo?.lastPage}
+                        onPageChange={getNextData}
+                        breakLabel={'...'}
+                        marginPagesDisplayed={3}
+                        pageRangeDisplayed={2}
+                        containerClassName={styles.pagesLink}
+                        activeClassName={styles.activePageLink}
+                        />
+                        
+                        {/* <Pagination>
                             <Pagination.First />
                             <Pagination.Prev />
                             <Pagination.Item>{1}</Pagination.Item>
@@ -229,7 +249,7 @@ const ProductList = () => {
                             <Pagination.Item>{10}</Pagination.Item>
                             <Pagination.Next />
                             <Pagination.Last />
-                        </Pagination>
+                        </Pagination> */}
                         </div>
                     </Col>
                 </Row>
