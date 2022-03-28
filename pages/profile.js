@@ -9,12 +9,14 @@ import Layout from "../components/Layout"
 import Head from "next/head"
 import Input from "../components/Input"
 import { useDispatch, useSelector } from "react-redux"
-import { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { getProfile, updateProfile } from "../redux/actions/auth"
 import Button from "../components/Button"
 import carts from "../styles/cart.module.scss"
 import Link from "next/link"
 import { logout } from "../redux/actions/auth"
+import Modals from "../components/ModalUpdate"
+import NavbarUser from "../components/NavbarUser"
 
 const ProfileSeller = () => {
     const dispatch = useDispatch()
@@ -23,6 +25,7 @@ const ProfileSeller = () => {
     const genders = (String(auth.userData.gender))
     const hiddenFileInput = useRef(null)
     const [userToken, setUserToken] = useState()
+    const [modalShow, setModalShow] = React.useState(false);
 
     useEffect(()=>{
         const token = window.localStorage.getItem('token')
@@ -55,12 +58,17 @@ const ProfileSeller = () => {
         e.preventDefault();
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
-        const store_description = document.getElementById('store_description').value;
-        const store_name = document.getElementById('store_name').value;
+        let store_description = null
+        if (document.getElementById('store_description')){
+            store_description = document.getElementById('store_description').value;
+        }
+        let store_name = null
+        if (document.getElementById('store_name')){
+           store_name = document.getElementById('store_name').value;
+        }
         const gender = document.querySelector('#gender option:checked').value;
         const data = {name, email, store_description, store_name, gender}
         dispatch(updateProfile(data))
-        // route.push('/login')
     }
 
     const logoutHandler = () => {
@@ -83,6 +91,9 @@ const ProfileSeller = () => {
                         <div className={`${styles.content} text-center mt-4`}>Profile</div>
                         <div className={`${styles.contents} text-center mb-5`}>See your notifications for the latest updates</div>
                     </div>
+                </div>
+                <div className="d-flex justify-content-center align-items-center">                    
+                    <NavbarUser /> 
                 </div>
                 <Form onSubmit={profileHandler}>
                 <div className="mt-5 mx-5 px-5">
@@ -124,9 +135,10 @@ const ProfileSeller = () => {
                                             <option value={'female'}>female</option>
                                         </Form.Select>
                                     </div>                                            
-                                    <Button type="submit" className={`${carts.button} `}>
+                                    <Button onClick={()=>setModalShow(true)} type="submit" className={`${carts.button} `}>
                                     <div  className=" px-5">Edit <HiOutlinePencil /></div>
-                                    </Button>  
+                                    </Button>
+                                    <Modals show={modalShow} onHide={() => setModalShow(false)} />
                                 </Card>                               
                             </div>
                         </Col>
@@ -145,16 +157,17 @@ const ProfileSeller = () => {
                                             placeholder='Input Your Email *'
                                         />
                                     </div>
-                                    <Button type="submit" className={`${carts.button} `}>
+                                    <Button onClick={()=>setModalShow(true)} type="submit" className={`${carts.button} `}>
                                     <div  className=" px-5">Edit <HiOutlinePencil /></div>
-                                    </Button>     
+                                    </Button>
+                                    <Modals show={modalShow} onHide={() => setModalShow(false)} />
                                 </Card>                               
                             </div>
                         </Col>
                     </Row>
                 </div>
                 <div className="mt-4 mx-5 px-5 mb-5">
-                    <Button >
+                    <Button>
                         <Link href="/">
                             <a onClick={logoutHandler} className={`${styles.button} d-flex py-2`}>
                                 <div className="px-2"><MdLogout /></div>
@@ -199,7 +212,7 @@ const ProfileSeller = () => {
                             placeholder='Input Your Name *'
                         />
                         <div className="px-3">as {role?.name}</div>
-                        <Button type="submit" className={`${carts.button} ms-1 mt-1`}>Edit <HiOutlinePencil /></Button>
+                        <Button onClick={()=>setModalShow(true)} type="submit" className={`${carts.button} ms-1 mt-1`}>Edit <HiOutlinePencil /></Button>
                     </div>                        
                 </div>
             </div>
@@ -216,9 +229,10 @@ const ProfileSeller = () => {
                                         <option value={'female'}>female</option>
                                     </Form.Select>
                                 </div>                                            
-                                <Button type="submit" className={`${carts.button} `}>
+                                <Button onClick={()=>setModalShow(true)} type="submit" className={`${carts.button} `}>
                                 <div  className=" px-5">Edit <HiOutlinePencil /></div>
-                                </Button>  
+                                </Button>
+                                <Modals show={modalShow} onHide={() => setModalShow(false)} />
                             </Card>                               
                         </div>
                     </Col>
@@ -237,9 +251,10 @@ const ProfileSeller = () => {
                                         placeholder='Input Your Email *'
                                     />
                                 </div>
-                                <Button type="submit" className={`${carts.button} `}>
+                                <Button onClick={()=>setModalShow(true)} type="submit" className={`${carts.button} `}>
                                 <div  className=" px-5">Edit <HiOutlinePencil /></div>
-                                </Button>     
+                                </Button>
+                                <Modals show={modalShow} onHide={() => setModalShow(false)} />
                             </Card>                               
                         </div>
                     </Col>
@@ -258,9 +273,10 @@ const ProfileSeller = () => {
                                         placeholder='Your Store Name *'
                                     />
                                 </div>                                            
-                                <Button type="submit" className={`${carts.button} `}>
+                                <Button onClick={()=>setModalShow(true)} type="submit" className={`${carts.button} `}>
                                 <div  className=" px-5">Edit <HiOutlinePencil /></div>
-                                </Button>   
+                                </Button>
+                                <Modals show={modalShow} onHide={() => setModalShow(false)} /> 
                             </Card>                               
                         </div>
                     </Col>
@@ -279,9 +295,10 @@ const ProfileSeller = () => {
                                         placeholder='Your Store Description *'
                                     />
                                 </div>                                            
-                                <Button type="submit" className={`${carts.button} `}>
+                                <Button onClick={()=>setModalShow(true)} type="submit" className={`${carts.button} `}>
                                 <div  className=" px-5">Edit <HiOutlinePencil /></div>
-                                </Button>   
+                                </Button>
+                                <Modals show={modalShow} onHide={() => setModalShow(false)} />
                             </Card>                               
                         </div>
                     </Col>
