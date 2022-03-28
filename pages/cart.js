@@ -41,6 +41,13 @@ const onIncrement = (e)=>{
   const toCheckout = () => {
     router.push('/cart-checkout')
   }
+  const deleteAllInCart = async() => {
+    cart.data?.map((datas)=>{
+      deleteCart(dispatch, datas.id)
+    })
+    window.scrollTo(0,0)
+    await getCart(dispatch)
+  }
   return(
       <>
         <Layout>
@@ -110,7 +117,7 @@ const onIncrement = (e)=>{
                   <Button className={`${carts.buttonUpdate} fw-bold`}>Apply Cupon</Button>
                 </div>
                 <div className="text-end">
-                  <Button classStyle={`${carts.buttonDelete}`}>Clear Cart</Button>
+                  <Button onClick={deleteAllInCart} classStyle={`${carts.buttonDelete}`}>Clear Cart</Button>
                   <Button classStyle={`${carts.buttonUpdate} fw-bold`}>Update Cart</Button>
                 </div>
               </div>
