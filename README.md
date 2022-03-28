@@ -1,34 +1,79 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+  <a href="https://imgbb.com/"><img src="https://i.ibb.co/JcpzNjJ/favicon.png" alt="favicon" width="100px"></a>
+</p>
+<div align="center">
+<h1>The King Furniture</h1>
+<p>The King Furniture is a shop that sells a variety of your home furniture needs.</p>
+<br>
+</div>
 
-## Getting Started
+## 📍 About
+Repository Frontend - The King Furniture
 
-First, run the development server:
+<br>
 
-```bash
-npm run dev
-# or
-yarn dev
+## 📌 How To Install?
+
+- Clone This Repo
 ```
+git clone https://github.com/eexxprd/frontend-thekingfurniture
+```
+- Go To Folder Repo
+```
+cd frontend-thekingfurniture
+```
+- Install Module
+```
+npm install
+```
+- Type ``` npm run dev ``` To Start The Project
+- Set file .env ```http://localhost:5000``` from backend
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br>
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 🔎 Preview Pages
+  <span>
+	<a href="https://ibb.co/CmBCzLw"><img src="https://i.ibb.co/xXh9DZ2/Screenshot-from-2022-03-27-21-10-21.png" alt="Screenshot-from-2022-03-27-21-10-21" width="415"></a>
+	<a href="https://ibb.co/FJN7Mgq"><img src="https://i.ibb.co/xGP50J8/Screenshot-from-2022-03-27-21-12-03.png" alt="Screenshot-from-2022-03-27-21-12-03" width="415"></a>
+    <a href="https://ibb.co/7twxLKN"><img src="https://i.ibb.co/SwhDGB7/Screenshot-from-2022-03-27-21-13-35.png" alt="Screenshot-from-2022-03-27-21-13-35" width="415"></a>
+    <br/>
+  </span>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+<br>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## ✍️ The King Furniture - Backend Link
+https://github.com/eexxprd/backend-TheKingFurniture 
 
-## Learn More
+<br>
 
-To learn more about Next.js, take a look at the following resources:
+## ⛏️ Built Using
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [@material-ui/core](https://www.npmjs.com/package/@material-ui/core)
+- [@material-ui/icons](https://www.npmjs.com/package/@material-ui/icons)
+- [axios](https://www.npmjs.com/package/axios)
+- [bootstrap](https://www.npmjs.com/package/bootstrap)
+- [next](https://www.npmjs.com/package/next)
+- [node-sass](https://www.npmjs.com/package/node-sass)
+- [qs](https://www.npmjs.com/package/qs)
+- [react](https://www.npmjs.com/package/react)
+- [react-bootstrap](https://www.npmjs.com/package/react-bootstrap)
+- [react-dom](https://www.npmjs.com/package/react-dom)
+- [react-icons](https://www.npmjs.com/package/react-icons)
+- [react-number-format](https://www.npmjs.com/package/react-number-format)
+- [react-redux](https://www.npmjs.com/package/react-redux)
+- [react-responsive-carousel](https://www.npmjs.com/package/react-responsive-carousel)
+- [redux](https://www.npmjs.com/package/redux)
+- [redux-logger](https://www.npmjs.com/package/redux-logger)
+- [redux-promise-middleware](https://www.npmjs.com/package/redux-promise-middleware)
+- [redux-thunk](https://www.npmjs.com/package/redux-thunk)
+- [eslint](https://www.npmjs.com/package/eslint)
+- [sass](https://www.npmjs.com/package/sass)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<br>
 
-## Deploy on Vercel
+## 🤝 The King Furniture - Team Project
+|                                     [Jumelisah](https://github.com/jumelisah)                                      |                                   [Kelvin Wong](https://github.com/7shiroi)                                   |                                           [Asher Azriel Ginting](https://github.com/asherginting)                                            |                                  [Zalfa Nur Amalia](https://github.com/zalfanuramalia)                                   |                                                     [Tofan Avianto](https://github.com/eexxprd)                                                      |
+| :----------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://ibb.co/KrYk4n2"><img src="https://i.ibb.co/BCmxWky/jumelisah.jpg" alt="jumelisah" width="80"></a> | <a href="https://ibb.co/zPM3sjp"><img src="https://i.ibb.co/YfC52Ym/kelvin.jpg" alt="kelvin" width="150"></a> | <a href="https://ibb.co/rZ4KD8m"><img src="https://i.ibb.co/MRMyFws/IMG-20210402-181933-561.jpg" alt="Asher-Azriel-Ginting" width='200'></a> | <a href="https://ibb.co/4K0Fs66"><img src="https://i.ibb.co/mbPRvLL/zalfa.jpg" alt="zalfa" width="200" height="100"></a> | <a href="https://ibb.co/jVJyG2j"><img src="https://i.ibb.co/k3m40fP/Whats-App-Image-2022-03-13-at-21-38-51.jpg" alt="Tofan-Avianto" width='200'></a> |
+|                                          <b>PM & Fullstack Developer</b>                                           |                                           <b>Backend Developer</b>                                            |                                                          <b>Frontend Developer</b>                                                           |                                                <b>Frontend Developer</b>                                                 |                                                              <b>Frontend Developer</b>                                                               |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

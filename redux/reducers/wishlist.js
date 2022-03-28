@@ -2,24 +2,24 @@ const initialState = {
   data: [],
 }
 
-const favorite = (state = initialState, action) => {
+const wishlist = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_FAVORITE': {
+    case 'ADD_WISHLIST': {
       const data = action.payload
       state.data = data
       return { ...state }
     }
-    case 'REMOVE_FAVORITE': {
+    case 'REMOVE_WISHLIST': {
       const data = action.payload
       state.data = data
       return { ...state }
     }
-    case 'CHECK_FAVORITE': {
+    case 'CHECK_WISHLIST': {
       const data = action.payload
       state.data = data
       return { ...state }
     }
-    case 'GET_FAVORITE': {
+    case 'GET_WISHLIST': {
       const data = action.payload
       state.data = data
       if (!Array.isArray(data)) {
@@ -33,4 +33,4 @@ const favorite = (state = initialState, action) => {
   }
 }
 
-export default favorite
+export default wishlist

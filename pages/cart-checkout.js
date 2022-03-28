@@ -20,6 +20,7 @@ const SellingProduct = () => {
     const { paymentMethod } = useSelector(state=>state)
     const [showPayment, setShowPayment] = useState(false)
     const [activePayment, setActivePayment] = useState(1)
+    const [wrongForm, setWrongForm] = useState(false)
     useEffect(()=>{
         getPaymentMethod(dispatch)
         getCart(dispatch)
@@ -33,14 +34,16 @@ const SellingProduct = () => {
         const phone_number = `${phoneCode}-${phone}`
         const data = { recipient_name, address, phone_number, id_payment_method, id_transaction_status: 2}
         console.log(data)
-        if (!cart.data) {
-            alert('Your cart is empty')
+        if (Object.keys(data).length) {
+            cart.data.map(async(element) => {
+                checkoutCart(dispatch, element.id, data)
+                console.log(checkoutCart(dispatch, element.id, data))
+                await router.push('/cart')
+            });
         }
-        cart.data.map(element => {
-            checkoutCart(dispatch, element.id, data)
-            console.log(checkoutCart(dispatch, element.id, data))
-        });
-        await router.push('/cart')
+        else{
+            setWrongForm(true)
+        }
     }
     return (
         <>  
@@ -61,6 +64,9 @@ const SellingProduct = () => {
                     </div>
                 </div>
                 <div className="px-5 mx-5 mt-5 pt-3">
+                    {wrongForm && <div className='text-danger'>
+                        Please fill in all the field
+                    </div>}
                     <Row>
                         <Col xs={12} md={3}></Col>
                         <Col xs={12} md={6}>
