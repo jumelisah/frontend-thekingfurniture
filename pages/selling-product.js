@@ -109,12 +109,12 @@ const SellingProduct = () => {
                 <NavbarProfile />    
             </div> 
         <Form  onSubmit={addProductHandler}> 
-        {/* {auth.errMsg &&
+        {productSeller.errorMsg &&
           <div className="alert alert-warning fade show" role="alert" aria-label="Close">
-            <strong>Error</strong>
-        </div>
-        } */}
-        {productSeller.data  &&
+          <strong>{productSeller.errorMsg}</strong>
+          </div>
+        }
+        {!productSeller.errorMsg  &&
           <Modals show={modalShow} onHide={() => setModalShow(false)} />
         }
         <Container className='mb-5'>

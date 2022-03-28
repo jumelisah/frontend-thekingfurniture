@@ -1,5 +1,7 @@
 const dataProductSeller = {
-    data: []
+    data: [],
+    errorMsg: '',
+    errMsg: '',
 }
 
 const productSeller = (state = dataProductSeller, action) => {
@@ -20,6 +22,9 @@ const productSeller = (state = dataProductSeller, action) => {
         case 'ADD_PRODUCT_SELLER': {
             const data = action.payload
             state.data = data
+            state.error = true
+            state.errorMsg = data.error
+            state.errMsg = data.message
             return {...state }
         }
         default: {
