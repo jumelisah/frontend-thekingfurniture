@@ -7,9 +7,9 @@ const product = (state = dataProduct, action) => {
         case 'GET_PRODUCT': {
             const data = action.payload
             state.data = data
-            if(!Array.isArray(data)){
-                state.data = [data]
-            }
+            // if(!Array.isArray(data)){
+            //     state.data = [data]
+            // }
             return {...state }
         }
         case 'DELETE_PRODUCT': {

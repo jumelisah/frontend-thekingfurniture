@@ -26,6 +26,7 @@ const ProfileSeller = () => {
     const hiddenFileInput = useRef(null)
     const [userToken, setUserToken] = useState()
     const [modalShow, setModalShow] = React.useState(false);
+    const [showImage, setShowImage] = useState(people)
     const [datas, setDatas] = useState({})
 
     useEffect(()=>{
@@ -36,8 +37,13 @@ const ProfileSeller = () => {
     useEffect(
         () => {
         dispatch(getProfile)
-        }, []
+        }, [dispatch]
     )
+    useEffect(()=>{
+        if(auth.userData.picture) {
+            setShowImage(auth.userData.picture)
+        }
+    }, [auth.userData.picture])
     const uploadFile = (e) => {
         e.preventDefault()
         hiddenFileInput.current.click()

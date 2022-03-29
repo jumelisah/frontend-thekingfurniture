@@ -34,7 +34,7 @@ const rootReducers = combineReducers({
     transactionSeller,
     paymentMethod,
     transactionUser,
-    wishlist
+    wishlist,
 })
 
 export default rootReducers
