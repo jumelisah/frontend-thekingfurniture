@@ -133,7 +133,7 @@ export default function Home() {
           <section>
               <Container>
                   <Row className='mt-5 mb-5 text-center'>
-                  {product.data.result?.map((datas, idx)=>{
+                  {product.data?.map((datas, idx)=>{
                                 return (
                                   <Col md={4} key={datas.id} style={{cursor: 'pointer'}} onClick={()=>productDetail(datas.id)} className="mb-4">
                                   <Image src={datas.product_images[0]?.image ? datas.product_images[0]?.image : '/images/chair.png'} width={360} height={450} alt="chair"/>
