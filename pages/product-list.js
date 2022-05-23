@@ -213,7 +213,7 @@ const ProductList = () => {
                             {product.data.result?.map((datas, idx)=>{
                                 return (
                                     <Col xl={4} key={datas.id} style={{cursor: 'pointer'}} onClick={()=>productDetail(datas.id)}>
-                                        <Image src={datas.product_images[0]?.image ? datas.product_images[0]?.image : empty} width={293} height={400} alt='products' layout="fixed" />
+                                        <Image src={datas.product_images[0]?.image ? datas.product_images[0]?.image : empty} width={300} height={300} alt='products' layout="fixed" objectFit="over"/>
                                         <div className="text-center">{datas.name}</div>
                                         <div className="text-center"><NumberFormat value={datas?.price} displayType={'text'} thousandSeparator={'.'} decimalSeparator={','} prefix={'Rp. '} ></NumberFormat></div>
                                     </Col>
