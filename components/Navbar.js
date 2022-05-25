@@ -58,7 +58,7 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ms-auto my-0 my-lg-auto align-items-lg-center mb-2 mb-lg-0">
+          <ul className="navbar-nav ms-auto my-0 my-lg-auto align-items-center mb-2 mb-lg-0">
             <li className="nav-item">
               <Link href='/'>
                 <a className={`${route.pathname === '/' && 'active'}nav-link fw-bold fs-5`} aria-current="page">HOME</a>
@@ -131,8 +131,8 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item d-flex flex-row align-items-center">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex flex-row justify-content-center align-items-center">
+            <li className="nav-item">
               <button onClick={searchBtn} className="btn" type="submit">
                 <BiSearchAlt2 className="fs-2 text-white"/>
               </button>
@@ -141,7 +141,7 @@ const Navbar = () => {
               </form>
             </li>
             <li className="nav-item">
-              <Link href='/favorite'>
+              <Link href='/favorite' passHref>
               <button className="btn position-relative ms-lg-1">
                 <BiHeart className="fs-2 text-white"/>
                 <div className={`bg-white position-absolute text-white rounded-circle ${styles.notif}`}>0</div>
@@ -149,7 +149,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-            <Link href='/cart'>
+            <Link href='/cart' passHref>
               <button className="btn position-relative mx-lg-1">
                 <BiCartAlt className="fs-2 text-white"/>
                 <div className={`bg-white position-absolute text-white rounded-circle ${styles.notif}`}>0</div>
@@ -157,9 +157,9 @@ const Navbar = () => {
               </Link>
              
             </li>
-            <li className="nav-item dropdown ms-lg-3">
+            <li className="nav-item dropdown ms-lg-3 dropstart">
               <Link href='/'>
-                <a className="nav-link fw-bold fs-5" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a className="nav-link fw-bold fs-5 ms-3 ms-lg-0" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <Image src='/images/menu.png' layout='intrinsic' alt='menu' width={25} height={25} />
                 </a>
               </Link>
