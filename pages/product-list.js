@@ -31,6 +31,7 @@ const ProductList = () => {
     const dispatch = useDispatch()
     const router = useRouter()
     const [sizeValue, setSizeValue] = useState([])
+    const [seePagination, setSeePagination] = useState(true)
 
     useEffect(()=>{
         dispatch(getColors)
@@ -74,8 +75,6 @@ const ProductList = () => {
         }
     }
     const getNextData = async({selected}) => {
-        console.log(selected)
-        // window.scrollTo(0,0)
         getProduct(dispatch, selected)
     }
 
@@ -102,7 +101,7 @@ const ProductList = () => {
                         <div className={`${styles.contents} text-center mb-5`}>Find and buy the one you like</div>
                     </div>
                 </div>
-                <Row className={`${styles.filter} px-5`}>
+                <Row className={`${styles.filter} px-5 m-0`}>
                     <Col xl={3} className='px-5 mt-5 pt-3'>
                         <h3>Categories</h3>
                         <div className="mt-5">
@@ -209,7 +208,7 @@ const ProductList = () => {
                             <div className="me-5">Sort by <GoTriangleDown /></div>
                         </div>
                         {product.data &&
-                        <Row className="mt-5">
+                        <Row className="my-5">
                             {product.data?.map((datas, idx)=>{
                                 return (
                                     <Col md={4} key={datas.id} style={{cursor: 'pointer'}} onClick={()=>productDetail(datas.id)}>
@@ -220,36 +219,19 @@ const ProductList = () => {
                                 )
                             })}                            
                         </Row>}
-                        <div className="d-flex flex-column align-items-center mt-5 mb-5">
-                        <ReactPaginate
-                        previousLabel={<BiChevronsLeft />}
-                        nextLabel={<BiChevronsRight />}
-                        pageCount={product.data.pageinfo?.lastPage}
-                        onPageChange={getNextData}
-                        breakLabel={'...'}
-                        marginPagesDisplayed={3}
-                        pageRangeDisplayed={2}
-                        containerClassName={styles.pagesLink}
-                        activeClassName={styles.activePageLink}
-                        />
-                        
-                        {/* <Pagination>
-                            <Pagination.First />
-                            <Pagination.Prev />
-                            <Pagination.Item>{1}</Pagination.Item>
-                            <Pagination.Ellipsis />
-
-                            <Pagination.Item>{4}</Pagination.Item>
-                            <Pagination.Item>{5}</Pagination.Item>
-                            <Pagination.Item >{6}</Pagination.Item>
-                            <Pagination.Item>{7}</Pagination.Item>
-                            <Pagination.Item >{8}</Pagination.Item>
-
-                            <Pagination.Ellipsis />
-                            <Pagination.Item>{10}</Pagination.Item>
-                            <Pagination.Next />
-                            <Pagination.Last />
-                        </Pagination> */}
+                        <div className={`${seePagination ? 'd-none' : 'd-flex flex-column align-items-center mb-5'}`}>
+                            <ReactPaginate
+                            previousLabel={<BiChevronsLeft />}
+                            nextLabel={<BiChevronsRight />}
+                            pageCount={product.pageInfo?.lastPage}
+                            onPageChange={getNextData}
+                            breakLabel={'...'}
+                            marginPagesDisplayed={3}
+                            pageRangeDisplayed={2}
+                            containerClassName={styles.pagesLink}
+                            activeClassName={styles.activePageLink}
+                            renderOnZeroPageCount={() => setSeePagination(false)}
+                            />
                         </div>
                     </Col>
                 </Row>

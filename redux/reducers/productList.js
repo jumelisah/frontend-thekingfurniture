@@ -1,5 +1,6 @@
 const dataProduct = {
-    data: []
+    data: [],
+    pageInfo: {}
 }
 
 const product = (state = dataProduct, action) => {
@@ -10,6 +11,7 @@ const product = (state = dataProduct, action) => {
             // if(!Array.isArray(data)){
             //     state.data = [data]
             // }
+            state.pageInfo = data.pageinfo
             return {...state }
         }
         case 'DELETE_PRODUCT': {
