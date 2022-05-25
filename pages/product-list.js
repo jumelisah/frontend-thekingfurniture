@@ -46,7 +46,7 @@ const ProductList = () => {
 
     useEffect(() => {
         dispatch(getCategoryTotal);
-      }, [])
+      }, [dispatch])
 
     const rangeSelector = (event, newValue) => {
         setValue(newValue);
@@ -210,7 +210,7 @@ const ProductList = () => {
                         </div>
                         {product.data &&
                         <Row className="mt-5">
-                            {product.data.result?.map((datas, idx)=>{
+                            {product.data?.map((datas, idx)=>{
                                 return (
                                     <Col xl={4} key={datas.id} style={{cursor: 'pointer'}} onClick={()=>productDetail(datas.id)}>
                                         <Image src={datas.product_images[0]?.image ? datas.product_images[0]?.image : empty} width={300} height={300} alt='products' layout="fixed" objectFit="over"/>
