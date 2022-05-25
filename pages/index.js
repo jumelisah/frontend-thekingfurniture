@@ -111,22 +111,24 @@ export default function Home() {
                 </Row>
             </Container>
           </section>
-          <Row className='mt-5 mb-5'>
-              <Col xl={12}>
-                <ul className='menu d-flex align-items-center justify-content-center' key='menu'>
+          <Row className='m-0 mt-5 mb-5'>
+              {/* <Col xl={12}> */}
+                <ul className='menu d-flex align-items-center justify-content-center p-0' key='menu'>
                   {menu.map(item => {
                     return (
+                      <Col md={4} key={item.name}>
                       <li key={item.name}>
                         <div className='cursor-pointer' onClick={() => { setActive(item.onclick) }}>
-                          <a className={`${styles.cursor} d-flex flex-row align-items-center  mt-4 fs-5 ${active === item.onclick ? 'active' : ''}`}>
+                          <a className={`${styles.cursor} d-flex flex-row justify-content-center align-items-center mt-4 fs-5 ${active === item.onclick ? 'active' : ''}`}>
                             {item.name}
                           </a>
                         </div>
                       </li>
+                      </Col>
                     )
                   })}
                 </ul>
-              </Col>
+              {/* </Col> */}
             </Row>
           {active === 'newProduct' &&
           <> 
@@ -343,9 +345,9 @@ export default function Home() {
           </>
           }
           <section>
-          <Row className='py-5'>
-          <Col xs={12} md={4}>
-          <Card className="text-center bg-color5 border-0">
+          <Row className='m-0 py-5'>
+          <Col xs={12} xl={4} className="p-0">
+          <Card className="text-center bg-color5 border-0 p-0">
             <Container>
               <Card.Body>
                 <div height={30} className="my-3">
@@ -366,7 +368,7 @@ export default function Home() {
             </Container>
           </Card>
         </Col>
-        <Col xs={12} md={4}>
+        <Col xs={12} xl={4} className="p-0">
           <Card className="text-center bg-color4 border-0">
             <Container>
               <Card.Body>
@@ -388,7 +390,7 @@ export default function Home() {
             </Container>
           </Card>
         </Col>
-        <Col xs={12} md={4}>
+        <Col xs={12} xl={4} className="p-0">
         <Card className="text-center bg-color5 border-0">
             <Container>
               <Card.Body>
@@ -413,7 +415,7 @@ export default function Home() {
       </Row>
           </section>
           <section>
-          <Row className='py-2 bg-color4 align-items-center justify-content-center mb-4'>
+          <Row className='py-2 bg-color4 align-items-center justify-content-center mb-4 m-0'>
           <Col xs={12} md={6}>
             <Card className="text-center bg-color4 border-0">
               <Container>

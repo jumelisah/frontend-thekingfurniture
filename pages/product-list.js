@@ -212,8 +212,8 @@ const ProductList = () => {
                         <Row className="mt-5">
                             {product.data?.map((datas, idx)=>{
                                 return (
-                                    <Col xl={4} key={datas.id} style={{cursor: 'pointer'}} onClick={()=>productDetail(datas.id)}>
-                                        <Image src={datas.product_images[0]?.image ? datas.product_images[0]?.image : empty} width={300} height={300} alt='products' layout="fixed" objectFit="over"/>
+                                    <Col md={4} key={datas.id} style={{cursor: 'pointer'}} onClick={()=>productDetail(datas.id)}>
+                                        <Image src={datas.product_images[0]?.image ? datas.product_images[0]?.image : empty} width={300} height={300} onError={e => e.target.src = empty} alt='products' objectFit="cover"/>
                                         <div className="text-center">{datas.name}</div>
                                         <div className="text-center"><NumberFormat value={datas?.price} displayType={'text'} thousandSeparator={'.'} decimalSeparator={','} prefix={'Rp. '} ></NumberFormat></div>
                                     </Col>
