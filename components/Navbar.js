@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { logout } from "../redux/actions/auth";
 import qs from 'qs'
 import { getCart } from "../redux/actions/cart";
+import { getFavorite } from "../redux/actions/favorite";
 
 const Navbar = () => {
   const route = useRouter();
