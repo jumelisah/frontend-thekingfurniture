@@ -25,6 +25,7 @@ const favorite = (state = initialState, action) => {
       if (!Array.isArray(data)) {
         state.data = [data]
       }
+      window.localStorage.setItem('tkfFav', JSON.stringify(state.data))
       return { ...state }
     }
     default: {

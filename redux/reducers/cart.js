@@ -8,6 +8,7 @@ const cart = (state = initialState, action) => {
     case 'ADD_CART': {
       const data = action.payload
       state.data = data
+      window.localStorage.setItem('tkfCart', JSON.stringify(state.data))
       return { ...state }
     }
     case 'GET_CART': {

@@ -11,13 +11,6 @@ import { useEffect, useState } from "react"
 import { addToCart } from '../redux/actions/cart'
 
 const Favorite = () => {
-
-  // const productsFavorite = [
-  //   { image: '/images/img-product.png', name: 'Coaster 506222-CO Loveseat', status: 'In Stock', price: 'Rp. 400.000' },
-  //   { image: '/images/img-product.png', name: 'Coaster 506222-CO Loveseat', status: 'In Stock', price: 'Rp. 400.000' },
-  //   { image: '/images/img-product.png', name: 'Coaster 506222-CO Loveseat', status: 'In Stock', price: 'Rp. 400.000' },
-  // ]
-
   const dispatch = useDispatch()
 
   const { favorite } = useSelector(state => state)
@@ -27,7 +20,7 @@ const Favorite = () => {
   useEffect(() => {
     const token = window.localStorage.getItem('token')
     dispatch(getFavorite(token))
-  }, [])
+  }, [dispatch])
 
   // const addCart = async (e) => {
   //   e.preventDefault()

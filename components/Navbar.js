@@ -8,18 +8,33 @@ import Button from "../components/Button"
 import { useEffect, useState } from "react";
 import { logout } from "../redux/actions/auth";
 import qs from 'qs'
+import { getCart } from "../redux/actions/cart";
 
 const Navbar = () => {
   const route = useRouter();
   const dispatch = useDispatch()
-  const {auth} = useSelector(state=>state)
+  const {auth, cart, favorite} = useSelector(state=>state)
   const [userToken, setUserToken] = useState()
-  // const token = window.localStorage.getItem('token')
-
+  const [totalFav, setTotalFav] = useState(0)
+  const [totalCart, setTotalCart] = useState(0)
   useEffect(()=>{
     const token = window.localStorage.getItem('token')
+    const fav = JSON.parse(window.localStorage.getItem('tkfFav'))
+    const cart = JSON.parse(window.localStorage.getItem('tkfCart'))
     setUserToken(token)
-  },[auth.token])
+    if (fav) {
+      setTotalFav(fav.length)
+    } else {
+      dispatch(getFavorite(token))
+      setTotalFav(favorite?.data.length)
+    }
+    if (cart) {
+      setTotalCart(cart.length)
+    } else {
+      getCart(dispatch)
+      setTotalCart(cart?.data.length)
+    }
+  },[auth.token, dispatch, favorite.data.length])
 
   const searchBtn = (e) => {
     e.preventDefault()
@@ -144,7 +159,7 @@ const Navbar = () => {
               <Link href='/favorite' passHref>
               <button className="btn position-relative ms-lg-1">
                 <BiHeart className="fs-2 text-white"/>
-                <div className={`bg-white position-absolute text-white rounded-circle ${styles.notif}`}>0</div>
+                <div className={`bg-white position-absolute text-white rounded-circle ${styles.notif}`}>{totalFav}</div>
               </button>
               </Link>
             </li>
